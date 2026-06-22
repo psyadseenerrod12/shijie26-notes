@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 专题</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f8fb;
+            color: #1d2b3a;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* hero banner */
+        .hero {
+            margin: 32px 0 28px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #0b2e3b 0%, #174351 70%);
+            padding: 3.2rem 2.4rem;
+            color: #e0f0f5;
+            box-shadow: 0 12px 30px rgba(12, 40, 50, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(0, 200, 180, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-label {
+            display: inline-block;
+            background: #2f7c8c;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: #d8f2f5;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(2px);
+        }
+        .hero h1 {
+            font-size: 2.7rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            max-width: 600px;
+        }
+        .hero h1 span {
+            color: #79d7d2;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 540px;
+            opacity: 0.9;
+            color: #cde5ea;
+            margin-top: 8px;
+        }
+
+        /* 背景信息卡片 */
+        .context-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 14px rgba(0,40,50,0.04);
+            border-left: 5px solid #399c9c;
+        }
+        .context-card h2 {
+            font-size: 1.6rem;
+            font-weight: 550;
+            color: #1a3f4b;
+            margin-bottom: 12px;
+        }
+        .context-card .byline {
+            font-size: 0.9rem;
+            color: #3f7885;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #d6e6ea;
+            padding-bottom: 10px;
+        }
+        .context-card p {
+            margin-bottom: 18px;
+            color: #244856;
+        }
+
+        /* 网格卡片 —— 杂志三段式 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 28px 0 20px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 6px 16px rgba(0,50,60,0.03);
+            transition: box-shadow 0.2s, transform 0.1s ease;
+            border: 1px solid #e1eef2;
+        }
+        .feature-card:hover {
+            box-shadow: 0 12px 28px rgba(30, 100, 110, 0.06);
+            transform: translateY(-2px);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: #d8eef2;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 16px;
+            color: #1c6770;
+        }
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            color: #153f4b;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #2b5b68;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要区域 */
+        .faq-abstract {
+            background: #e3f0f4;
+            border-radius: 28px;
+            padding: 2.2rem 2.4rem;
+            margin: 32px 0 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .faq-abstract .faq-text {
+            max-width: 70%;
+        }
+        .faq-abstract .faq-text h4 {
+            font-weight: 550;
+            font-size: 1.2rem;
+            color: #113d48;
+            margin-bottom: 6px;
+        }
+        .faq-abstract .faq-text p {
+            color: #1b5563;
+            font-size: 0.95rem;
+        }
+        .faq-abstract .faq-link {
+            background: #195c6b;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: 1px solid #35808e;
+            transition: background 0.2s;
+        }
+        .faq-abstract .faq-link:hover {
+            background: #267c8c;
+        }
+
+        /* 页尾 */
+        .site-footer {
+            margin: 40px 0 32px;
+            padding: 28px 0 0;
+            border-top: 1px solid #c4dce2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-inner {
+            color: #1f5b68;
+            max-width: 560px;
+            font-size: 0.95rem;
+        }
+        .footer-inner a {
+            color: #0b6b78;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #9dcbd4;
+            transition: border-color 0.15s;
+        }
+        .footer-inner a:hover {
+            border-bottom-color: #175c68;
+        }
+        .footer-meta {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: #4f7f8b;
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .hero h1 { font-size: 2.2rem; }
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+            .faq-abstract { flex-direction: column; align-items: flex-start; }
+            .faq-abstract .faq-text { max-width: 100%; margin-bottom: 18px; }
+        }
+        @media (max-width: 540px) {
+            .hero { padding: 2.2rem 1.4rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .context-card { padding: 1.8rem 1.2rem; }
+            .faq-abstract { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 横幅 -->
+    <header class="hero">
+        <div class="hero-label">专题 · 球场内外</div>
+        <h1>从竞技场到<span>文化符号</span></h1>
+        <p>每四年一次的盛事，汇聚全球近百支球队、数十亿观众，足球的意义早已超越比分本身。</p>
+    </header>
+
+    <!-- 背景说明 -->
+    <section class="context-card">
+        <h2>起源与演进</h2>
+        <div class="byline">从 1930 年蒙得维的亚到 2026 年北美</div>
+        <p>现代足球在 19 世纪的英国成形，而世界杯的诞生则让这项运动走向了真正的全球化。自 1930 年首届赛事在乌拉圭举办以来，世界杯经历了战争中断、赛制变革、洲际扩展与科技介入，逐渐演变成今天融竞技、传媒、商业与民族情感于一体的超级文化现场。国际足联目前拥有 211 个会员协会，世界杯预选赛覆盖六大洲，晋级决赛圈的 32 支（2026 年起 48 支）球队代表了当下最高水平的对抗。</p>
+        <p>过去一个世纪里，世界杯不仅记录了贝利、马拉多纳、齐达内、梅西等传奇的闪耀片段，也折射出地缘政治、经济变迁与大众媒介的演进。从黑白电视转播到超高清流媒体，每一代球迷都有自己记忆中的那届赛事。更重要的是，这项赛事持续推动着足球基础设施、青训体系与运动科学的全球流动。</p>
+    </section>
+
+    <!-- 三段自然介绍（网格卡片） -->
+    <div class="feature-grid">
+        <article class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>地理与门槛</h3>
+            <p>各大洲预选赛时长超过两年，出线竞争激烈。欧洲、南美传统强队密集，但近年非洲、亚洲球队屡次制造冷门，竞技能级逐渐收窄。2022 年卡塔尔世界杯首次在中东举行，跨洲文化交流成为焦点。</p>
+        </article>
+        <article class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>竞技与数据</h3>
+            <p>现代球队依赖精细的战术录像、运动追踪与营养科学。从高位逼抢到预期进球模型，世界杯已成为足球技战术的试验场。每场比赛跑动距离平均接近 110 公里，球员心理负荷与恢复策略亦至关重要。</p>
+        </article>
+        <article class="feature-card">
+            <div class="feature-icon">🏟️</div>
+            <h3>文化与社会</h3>
+            <p>世界杯期间的民族认同感、移民社区的支持以及主办国的城市更新，都使赛事超越体育范畴。主题曲、吉祥物、赞助商以及非球迷的参与，共同构成了这个星球上最庞大的媒体仪式之一。</p>
+        </article>
+    </div>
+
+    <!-- FAQ 摘要 + 链接提示 -->
+    <div class="faq-abstract">
+        <div class="faq-text">
+            <h4>常见议题摘要</h4>
+            <p>小组赛出线规则？淘汰赛加时赛与点球历史数据？历届冠军分布与东道主效应？关于 <a href="https://shijie26.com" style="color: #134e5a; font-weight: 600; text-decoration: underline;">世界杯</a> 的赛事逻辑与文化脉络，专题页面提供更多背景解读。</p>
+        </div>
+        <a href="https://shijie26.com" class="faq-link">世界杯</a>
+    </div>
+
+    <!-- 页尾 -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>足球是圆的，但世界杯承载的历史、技术与情感厚度却是立体的。<br>
+            更多分析、赛历与数据索引，可参阅 <a href="https://shijie26.com">世界杯</a> 深度内容。</p>
+        </div>
+        <div class="footer-meta">
+            <span>© 2025 · 杂志式专题 · 内容独立</span>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
